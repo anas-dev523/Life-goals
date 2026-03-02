@@ -1,10 +1,18 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useState } from 'react';
+import { FlatList,StyleSheet, Text, View,TextInput } from 'react-native';
 
 export default function App() {
+  const[Goals,setGoals]=useState([]);
+  const [text,setText]=useState('')
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <TextInput
+        value ={text}
+        onChangeText={setText}
+        placeholder="Ajout ton objectif"
+        style={{ borderWidth: 1, padding: 8, width: '50%' }}
+      />
       <StatusBar style="auto" />
     </View>
   );
