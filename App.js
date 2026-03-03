@@ -19,12 +19,27 @@ export default function App() {
   const handleDelete = (id) => {
     setGoals(currentGoals => currentGoals.filter(item => item.id !== id));
   }
+  const nextStatus ={
+    'En cours': 'Terminé',
+    'Terminé': 'Abandonné',
+    'Abandonné': 'En cours',
+  }
+  const handleStatusChange = (id) => {
+  setGoals(currentGoals =>
+    currentGoals.map(goal =>
+      goal.id === id ? { ...goal, status: nextStatus[goal.status] } : goal
+    )
+  );
+};
   return (
     <View style={styles.container}>
       <FlatList  
       data={Goals}
       renderItem={({ item }) => (
-     <GoalItem value={item.value} status={item.status} onDelete={() => handleDelete(item.id)} />
+     <GoalItem value={item.value} status={item.status} 
+     onDelete={() => handleDelete(item.id)} 
+     onStatusChange={() => handleStatusChange(item.id)}
+/>
       )}
       keyExtractor={(item) => item.id}
       />

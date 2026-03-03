@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, Text, StyleSheet, Alert,Button } from 'react-native';
-export default function GoalItem({ value, status, onDelete }){
+import { View, Text, StyleSheet, Alert,Button, TouchableOpacity } from 'react-native';
+export default function GoalItem({ value, status, onDelete,onStatusChange }){
 const alerthandler = (item) =>{
     Alert.alert(
         'Supprimer',
@@ -15,7 +15,7 @@ const alerthandler = (item) =>{
 return(
     <View style={styles.item}>
         <Text style={styles.value}>{value}</Text>
-        <Text style={styles.status}>{status}</Text>
+        <TouchableOpacity onPress={onStatusChange}><Text style={styles.status}>{status}</Text></TouchableOpacity>
         <Button title="supprimer" onPress={alerthandler} />
     </View>
 
