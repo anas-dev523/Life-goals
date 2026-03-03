@@ -1,12 +1,22 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Alert,Button } from 'react-native';
+export default function GoalItem({ value, status, onDelete }){
+const alerthandler = (item) =>{
+    Alert.alert(
+        'Supprimer',
+        "tu veux vraimenet supprimer ?",
+        [
+           { text: 'Annuler' ,style :'cancel'},
+           { text: 'Supprimer' , style :'destructive',onPress: onDelete},
+        ]
+    )
 
-export default function GoalItem({value,status}){
-
+}
 return(
     <View style={styles.item}>
         <Text style={styles.value}>{value}</Text>
         <Text style={styles.status}>{status}</Text>
+        <Button title="supprimer" onPress={alerthandler} />
     </View>
 
 );}

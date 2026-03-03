@@ -16,12 +16,15 @@ export default function App() {
       },
     ]);
   };
+  const handleDelete = (id) => {
+    setGoals(currentGoals => currentGoals.filter(item => item.id !== id));
+  }
   return (
     <View style={styles.container}>
       <FlatList  
       data={Goals}
       renderItem={({ item }) => (
-     <GoalItem value={item.value} status={item.status} />
+     <GoalItem value={item.value} status={item.status} onDelete={() => handleDelete(item.id)} />
       )}
       keyExtractor={(item) => item.id}
       />
