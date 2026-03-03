@@ -33,18 +33,27 @@ export default function App() {
 };
   return (
     <View style={styles.container}>
-      <FlatList  
-      data={Goals}
-      renderItem={({ item }) => (
-     <GoalItem value={item.value} status={item.status} 
-     onDelete={() => handleDelete(item.id)} 
-     onStatusChange={() => handleStatusChange(item.id)}
-/>
-      )}
-      keyExtractor={(item) => item.id}
-      />
+      <View style={styles.header}>
+        <Text style={styles.headerTitle}>Mes Objectifs</Text>
+        <Text style={styles.headerCount}>
+          {Goals.length} objectif{Goals.length !== 1 ? 's' : ''}
+        </Text>
+      </View>
       <GoalInput onAddGoal={addGoalHandler} />
-      <StatusBar style="auto" />
+      <FlatList
+        data={Goals}
+        renderItem={({ item }) => (
+          <GoalItem
+            value={item.value}
+            status={item.status}
+            onDelete={() => handleDelete(item.id)}
+            onStatusChange={() => handleStatusChange(item.id)}
+          />
+        )}
+        keyExtractor={(item) => item.id}
+        contentContainerStyle={styles.listContent}
+      />
+      <StatusBar style="dark" />
     </View>
   );
 }
@@ -52,7 +61,28 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f5f5f5',
-    paddingTop: 60,
+    backgroundColor: '#f0f0f7',
+    paddingTop: 55,
+  },
+  header: {
+    paddingHorizontal: 24,
+    paddingTop: 12,
+    paddingBottom: 18,
+  },
+  headerTitle: {
+    fontSize: 30,
+    fontWeight: '800',
+    color: '#1a1a2e',
+    letterSpacing: 0.3,
+  },
+  headerCount: {
+    fontSize: 14,
+    color: '#8a8a9a',
+    marginTop: 4,
+    fontWeight: '500',
+  },
+  listContent: {
+    paddingBottom: 12,
+    flexGrow: 1,
   },
 });
