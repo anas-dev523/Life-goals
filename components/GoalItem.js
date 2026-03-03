@@ -22,17 +22,35 @@ return(
 );}
 
 const styles = StyleSheet.create({
-        item:{
-            backgroundColor: '#c0fa8a',
-            padding: 12,
-        },
-         value: {
-             fontSize: 16,
-            fontWeight: 'bold',
-        },
-        status: {
-            fontSize: 14,
-            color: '#8237d8',
+  item: {
+    backgroundColor: '#ffffff',
+    padding: 16,
+    marginVertical: 6,
+    marginHorizontal: 16,
+    borderRadius: 12,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 2,
   },
-
+  value: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#1a1a1a',
+    flex: 1,
+  },
+  status: {
+    fontSize: 13,
+    color: '#8237d8',
+    fontWeight: '600',
+    marginHorizontal: 8,
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    backgroundColor: '#f3e8ff',
+    borderRadius: 8,
+  },
 })
