@@ -42,5 +42,7 @@ app.delete('/goals/:id', (req, res) => {
   res.json({ message: 'supprimé' })
 })
 // routes CRUD complètes - feature/crud-api
-app.listen(3000, () => console.log('API sur http://localhost:3000'))
+if (require.main === module) {
+  app.listen(3000, () => console.log('API sur http://localhost:3000'))
+}
 module.exports = app
